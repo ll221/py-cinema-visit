@@ -1,16 +1,16 @@
 from typing import List, Dict
 
-from .cinema.bar import CinemaBar
-from .cinema.hall import CinemaHall
-from .people.customer import Customer
-from .people.cinema_staff import Cleaner
+from app.cinema.bar import CinemaBar
+from app.cinema.hall import CinemaHall
+from app.people.customer import Customer
+from app.people.cinema_staff import Cleaner
 
 
 def cinema_visit(
-    movie: str,
     customers: List[Dict[str, str]],
     hall_number: int,
     cleaner: str,
+    movie: str,
 ) -> None:
     customer_objects: List[Customer] = []
 
@@ -19,7 +19,7 @@ def cinema_visit(
         customer_objects.append(customer)
         CinemaBar.sell_product(product=customer.food, customer=customer)
 
-    hall = CinemaHall(hall_number=hall_number)
+    hall = CinemaHall(number=hall_number)
     cleaning_staff = Cleaner(name=cleaner)
 
     hall.movie_session(
